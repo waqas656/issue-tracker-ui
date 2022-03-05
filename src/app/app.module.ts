@@ -6,11 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoaderComponent } from './loader/loader.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { SigninSignupComponent } from './signin-signup/signin-signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent
+    LoaderComponent,
+    SigninSignupComponent
   ],
   imports: [
     BrowserModule,
