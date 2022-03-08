@@ -10,12 +10,13 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-signin-signup',
   templateUrl: './signin-signup.component.html',
-  styleUrls: ['./signin-signup.component.css'],
+  styleUrls: ['./signin-signup.component.scss'],
   animations: [
     trigger('formState', [
       state('hide', style({
@@ -30,14 +31,20 @@ import {
     ])
   ]
 })
+
+
 export class SigninSignupComponent implements OnInit {
 
   state = 'login';
   isLoaderVisible: boolean = false;
   interval: ReturnType<typeof setTimeout> | undefined;
-  submitted = false; //for validation purposes
+  submitted = false; //for form validation purposes
 
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder) { }
+  constructor(
+    private loginService: LoginService, 
+    private formBuilder: FormBuilder,
+    private router: Router
+    ) { }
 
   //login form
   loginForm = this.formBuilder.group({
@@ -84,9 +91,10 @@ export class SigninSignupComponent implements OnInit {
     this.clearFormFields();
 
     this.startLoader();
-
+    
     this.loginService.loginUser();
 
+    this.router.navigateByUrl('/home');
   }
 
   register() {

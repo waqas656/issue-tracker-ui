@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+.container {
+  min-height: 100vh;
+  background-color: #1D1D1D;
+}
+
 .loader-pos{
   position: absolute;
   left: 45%;
